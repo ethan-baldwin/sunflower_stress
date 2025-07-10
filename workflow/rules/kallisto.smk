@@ -8,7 +8,7 @@ rule kallisto:
     log:
         "logs/kallisto_{replicate}.log"
     envmodules:
-        "kallisto/0.51.1-gompi-2023a
+        "kallisto/0.51.1-gompi-2023a"
     resources:
         mem_mb=8000,
         cpus_per_task=1
