@@ -4,7 +4,7 @@ rule kallisto:
         r2="trimmed_reads/{replicate}_P_R1.fastq.gz",
         index=f"{config['index_prefix']}.idx"
     output:
-        "kallisto_quant/{replicate}"
+        "kallisto_quant/{replicate}/abundance.h5"
     log:
         "logs/kallisto_{replicate}.log"
     envmodules:
