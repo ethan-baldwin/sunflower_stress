@@ -1,0 +1,17 @@
+configfile: "config/config.yaml"
+
+##### load rules #####
+
+include: "rules/common.smk"
+include: "rules/index_genome.smk"
+include: "rules/trim_reads.smk"
+include: "rules/kallisto.smk"
+
+
+
+# workdir: config['outdir']
+
+rule all:
+    input:
+        expand("kallisto_quant/{replicate}", replicate=REPLICATES["replicate_name"])
+       # expand("trimmed_reads/{replicate}_P_R1.fastq.gz", replicate=REPLICATES["replicate_name"])

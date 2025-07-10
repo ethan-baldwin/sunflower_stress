@@ -1,0 +1,5 @@
+replicates: /home/eab77806/sunflower_stress/config/replicates.tsv
+
+transcriptome: /scratch/eab77806/salt_stress/genomes/Ha412/Ha412HOv2.0-20181130.transcripts.fa
+
+index_prefix: /scratch/eab77806/salt_stress/genomes/Ha412/Ha412HOv2.0-20181130.transcripts.idx
