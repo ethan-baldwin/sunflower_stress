@@ -10,7 +10,7 @@ rule kallisto:
     envmodules:
         "kallisto/0.51.1-gompi-2023a"
     resources:
-        mem_mb=8000,
-        cpus_per_task=1
+        mem_mb=12000,
+        cpus_per_task=8
     shell:
         "kallisto quant -i {input.index} -o {output} -b 100 -t {resources.cpus_per_task} {input.r1} {input.r2}"
