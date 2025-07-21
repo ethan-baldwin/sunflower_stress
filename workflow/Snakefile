@@ -13,5 +13,5 @@ include: "rules/kallisto.smk"
 
 rule all:
     input:
-        directory(expand("kallisto_quant/{replicate}/", replicate=REPLICATES["replicate_name"]))
+        expand("kallisto_quant/{replicate}/abundance.h5", replicate=REPLICATES["replicate_name"])
        # expand("trimmed_reads/{replicate}_P_R1.fastq.gz", replicate=REPLICATES["replicate_name"])
