@@ -1,7 +1,7 @@
 rule fastp:
     input:
-        r1=lambda wildcards: f"raw_files/raw_reads_combined_lanes/{get_sample_read1[wildcards.replicate]}",
-        r2=lambda wildcards: f"raw_files/raw_reads_combined_lanes/{get_sample_read2[wildcards.replicate]}"
+        r1=lambda wildcards: f"raw_files/raw_reads_combined_runs/{get_sample_read1[wildcards.replicate]}",
+        r2=lambda wildcards: f"raw_files/raw_reads_combined_runs/{get_sample_read2[wildcards.replicate]}"
     output:
         trimmed1="trimmed_reads/{replicate}_P_R1.fastq.gz",
         trimmed2="trimmed_reads/{replicate}_P_R2.fastq.gz",
