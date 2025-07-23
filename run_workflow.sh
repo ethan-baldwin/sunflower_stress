@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=2gb
-#SBATCH --time=140:00:00
+#SBATCH --time=80:00:00
 #SBATCH --mail-type=END,FAIL
 #SBATCH --output=/scratch/eab77806/logs/%x_%j.out
 #SBATCH --error=/scratch/eab77806/logs/%x_%j.error
