@@ -12,7 +12,7 @@
 
 # load modules; poetry needed for snakemake to use pandas for some reason
 ml poetry/1.8.3-GCCcore-13.3.0
-ml snakemake/8.27.0-foss-2024a
+ml snakemake/8.4.2-foss-2023a
 
 snakemake --profile /home/eab77806/.config/slurm_profile/ \
 --directory /scratch/eab77806/salt_stress/ \
