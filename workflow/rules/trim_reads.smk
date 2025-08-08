@@ -14,7 +14,7 @@ rule fastp:
     log:
         "logs/fastp_{replicate}.log"
     envmodules:
-        "fastp/0.23.2-GCC-11.3.0"
+        "fastp/0.23.4-GCC-13.2.0"
     resources:
         mem_mb=8000,
         cpus_per_task=4
