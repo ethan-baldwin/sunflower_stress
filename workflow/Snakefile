@@ -14,5 +14,5 @@ include: "rules/kallisto.smk"
 rule all:
     input:
         "psuedoalignment_stats.txt",
-        expand("kallisto_quant/{replicate}/abundance.h5", replicate=REPLICATES["replicate_name"])
+        #expand("kallisto_quant/{replicate}/abundance.h5", replicate=REPLICATES["replicate_name"])
     

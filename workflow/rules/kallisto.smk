@@ -19,7 +19,7 @@ rule kallisto:
 
 rule kallisto_stats:
     input:
-        abundance="kallisto_quant/{replicate}/abundance.h5"
+        expand("kallisto_quant/{replicate}/abundance.h5", replicate=REPLICATES["replicate_name"])
     output:
         "psuedoalignment_stats.txt"
     log:
