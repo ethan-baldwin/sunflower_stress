@@ -28,4 +28,6 @@ rule kallisto_stats:
         mem_mb=4000,
         cpus_per_task=1
     shell:
-        "grep "p_pseudoaligned" kallisto_quant/*/run_info.json | awk -F'[/: ,]+' '{print $2, $5}' > {output}"
+        """
+        grep "p_pseudoaligned" kallisto_quant/*/run_info.json | awk -F'[/: ,]+' '{print $2, $5}' > {output}
+        """
