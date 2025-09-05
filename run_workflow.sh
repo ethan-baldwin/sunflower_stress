@@ -12,12 +12,12 @@
 
 # load modules; poetry needed for snakemake to use pandas for some reason
 # ml poetry/1.8.3-GCCcore-13.3.0
-# ml snakemake/8.27.0-foss-2024a
+ml snakemake/8.27.0-foss-2024a
 
 # after OS upgrade on cluster i had to install snakemake myself
-ml Mamba/23.11.0-0
+#ml Mamba/23.11.0-0
 
-source activate /home/eab77806/envs-mamba/snakemake
+#source activate /home/eab77806/envs-mamba/snakemake
 
 snakemake --profile /home/eab77806/.config/slurm_profile/ \
 --directory /scratch/eab77806/salt_stress/ \
