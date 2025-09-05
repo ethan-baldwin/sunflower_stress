@@ -3,7 +3,7 @@ configfile: "config/config.yaml"
 ##### load rules #####
 
 include: "rules/common.smk"
-include: "rules/index_genome.smk"
+include: "rules/star.smk"
 include: "rules/trim_reads.smk"
 include: "rules/kallisto.smk"
 
@@ -14,5 +14,6 @@ include: "rules/kallisto.smk"
 rule all:
     input:
         "psuedoalignment_stats.txt",
+        "star_alignment_stats.txt",
         #expand("kallisto_quant/{replicate}/abundance.h5", replicate=REPLICATES["replicate_name"])
     

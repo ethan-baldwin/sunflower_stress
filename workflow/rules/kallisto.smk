@@ -1,3 +1,16 @@
+rule index_kallisto:
+    input:
+        config['transcriptome']
+    output:
+        f"{config['kallisto_index_prefix']}.idx"
+    envmodules:
+        "kallisto/0.51.1-gompi-2023a"
+    resources:
+        mem_mb=10000
+    shell:
+        "kallisto index -i {output} {input}"
+
+
 rule kallisto:
     input:
         r1="trimmed_reads/{replicate}_P_R1.fastq.gz",
