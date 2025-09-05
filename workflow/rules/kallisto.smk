@@ -15,7 +15,7 @@ rule kallisto:
     input:
         r1="trimmed_reads/{replicate}_P_R1.fastq.gz",
         r2="trimmed_reads/{replicate}_P_R1.fastq.gz",
-        index=f"{config['index_prefix']}.idx"
+        index=f"{config['kallisto_index_prefix']}.idx"
     output:
         directory=directory("kallisto_quant/{replicate}"),
         abundance="kallisto_quant/{replicate}/abundance.h5"
