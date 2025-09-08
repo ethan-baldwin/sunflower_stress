@@ -25,8 +25,8 @@ rule star:
     envmodules:
         "STAR/2.7.11b-GCC-13.3.0"
     resources:
-        mem_mb=50000,
-        cpus_per_task=8
+        mem_mb=60000,
+        cpus_per_task=16
     shell:
         "STAR --runThreadN {resources.cpus_per_task} --genomeDir {input.index} --readFilesIn {input.r1} {input.r2} --readFilesCommand zcat --outFileNamePrefix {output.directory}"
 
