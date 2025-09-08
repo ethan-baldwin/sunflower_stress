@@ -17,7 +17,7 @@ rule index_star:
 rule star:
     input:
         r1="trimmed_reads/{replicate}_P_R1.fastq.gz",
-        r2="trimmed_reads/{replicate}_P_R1.fastq.gz",
+        r2="trimmed_reads/{replicate}_P_R2.fastq.gz",
         index="star_index"
     output:
         directory=directory("star_out/{replicate}/"),
