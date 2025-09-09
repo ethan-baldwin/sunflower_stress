@@ -26,7 +26,7 @@ rule kallisto:
         mem_mb=12000,
         cpus_per_task=8
     shell:
-        "kallisto quant -i {input.index} -o {output.directory} -b 100 -t {resources.cpus_per_task} {input.r1} {input.r2} > {output.std_out}"
+        "kallisto quant -i {input.index} -o {output.directory} -b 100 -t {resources.cpus_per_task} {input.r1} {input.r2} 2> {output.std_out}"
 
 
 rule kallisto_stats:
@@ -39,5 +39,5 @@ rule kallisto_stats:
         cpus_per_task=1
     shell:
         """
-        grep "p_pseudoaligned" kallisto_quant/*/run_info.json | awk -F'[/: ,]+' '{{print $2, $5}}' 2> {output}
+        grep "p_pseudoaligned" kallisto_quant/*/run_info.json | awk -F'[/: ,]+' '{{print $2, $5}}' > {output}
         """
