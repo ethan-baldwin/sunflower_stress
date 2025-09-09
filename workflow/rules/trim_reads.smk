@@ -19,4 +19,4 @@ rule fastp:
         mem_mb=8000,
         cpus_per_task=4
     shell:
-        "fastp -w {resources.cpus_per_task} --dont_overwrite --in1 {input.r1} --in2 {input.r2} --out1 {output.trimmed1} --out2 {output.trimmed2} --unpaired1 {output.unpaired1} --unpaired2 {output.unpaired2} --failed_out {output.failed} -j {output.json} -h {output.html}"
+        "fastp -w {resources.cpus_per_task} --dont_overwrite -gx --in1 {input.r1} --in2 {input.r2} --out1 {output.trimmed1} --out2 {output.trimmed2} --unpaired1 {output.unpaired1} --unpaired2 {output.unpaired2} --failed_out {output.failed} -j {output.json} -h {output.html}"
