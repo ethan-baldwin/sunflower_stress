@@ -1,10 +1,18 @@
 # replicate files
 replicates: /home/eab77806/sunflower_stress/config/replicates2.tsv
 
+# # kallisto indexing
+# transcriptome: /scratch/eab77806/salt_stress/genomes/Ha412/Ha412HO_v2_braker.cds.fa
+# kallisto_index_prefix: Ha412HO_v2_braker.transcripts.idx
+
+# # star indexing
+# genome_path: /scratch/eab77806/salt_stress/genomes/Ha412/Ha412HOv2.0-20181130.genome.fasta
+# gff_path: /scratch/eab77806/salt_stress/genomes/Ha412/Ha412HO_v2_braker.gff3
+
 # kallisto indexing
-transcriptome: /scratch/eab77806/salt_stress/genomes/Ha412/Ha412HO_v2_braker.cds.fa
-kallisto_index_prefix: Ha412HO_v2_braker.transcripts.idx
+transcriptome: /scratch/eab77806/salt_stress/genomes/human/hg38.cds.fa
+kallisto_index_prefix: human.transcripts
 
 # star indexing
-genome_path: /scratch/eab77806/salt_stress/genomes/Ha412/Ha412HOv2.0-20181130.genome.fasta
-gff_path: /scratch/eab77806/salt_stress/genomes/Ha412/Ha412HO_v2_braker.gff3
+genome_path: /scratch/eab77806/salt_stress/genomes/human/hg38.fa
+gff_path: /scratch/eab77806/salt_stress/genomes/human/hg38.ncbiRefSeq.gff3
