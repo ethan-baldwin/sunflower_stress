@@ -26,7 +26,7 @@ rule kallisto:
         mem_mb=12000,
         cpus_per_task=8
     params:
-        gff=config["gff_path"]
+        gff=config["kallisto_gff"]
     shell:
         "kallisto quant -i {input.index} -o {output.directory} -b 100 --genomebam --gtf {params.gff} -t {resources.cpus_per_task} {input.r1} {input.r2} 2> {output.std_err}"
 

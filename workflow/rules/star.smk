@@ -12,7 +12,7 @@ rule index_star:
         genome=config["genome_path"],
         gff=config["gff_path"]
     shell:
-        "STAR --runThreadN {resources.cpus_per_task} --runMode genomeGenerate --genomeDir {output} --genomeFastaFiles {params.genome} --sjdbGTFfile {params.gff} --sjdbGTFtagExonParentTranscript Parent --genomeChrBinNbits 15"
+        "STAR --runThreadN {resources.cpus_per_task} --runMode genomeGenerate --genomeDir {output} --genomeFastaFiles {params.genome} --sjdbGTFfile {params.gff} --genomeChrBinNbits 15"
 
 rule star:
     input:
