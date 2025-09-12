@@ -19,25 +19,32 @@ rule kallisto:
     output:
         directory=directory("kallisto_quant/{replicate}"),
         abundance="kallisto_quant/{replicate}/abundance.h5",
-        std_out="kallisto_reports/{replicate}.stdout"
+        std_err="kallisto_reports/{replicate}.stderr"
     envmodules:
-        "kallisto/0.51.1-gompi-2023a"
+        "kallisto/0.48.0-gompi-2022a"
     resources:
         mem_mb=12000,
         cpus_per_task=8
+    params:
+        gff=config["gff_path"]
     shell:
-        "kallisto quant -i {input.index} -o {output.directory} -b 100 -t {resources.cpus_per_task} {input.r1} {input.r2} 2> {output.std_out}"
+        "kallisto quant -i {input.index} -o {output.directory} -b 100 --genomebam --gtf {params.gff} -t {resources.cpus_per_task} {input.r1} {input.r2} 2> {output.std_err}"
 
 
 rule kallisto_stats:
     input:
-        expand("kallisto_quant/{replicate}/abundance.h5", replicate=REPLICATES["replicate_name"])
+        expand("kallisto_reports/{replicate}.stderr", replicate=REPLICATES["replicate_name"])
     output:
-        "psuedoalignment_stats.txt"
+        "psuedoalignment_stats.html"
+    envmodules:
+        "MultiQC/1.28-foss-2024a"
     resources:
         mem_mb=4000,
         cpus_per_task=1
+    params:
+        directory="kallisto_reports"
     shell:
         """
-        grep "p_pseudoaligned" kallisto_quant/*/run_info.json | awk -F'[/: ,]+' '{{print $2, $5}}' > {output}
+        multiqc {params.directory} -n {output}
+#        grep "p_pseudoaligned" kallisto_quant/*/run_info.json | awk -F'[/: ,]+' '{{print $2, $5}}' > {output}
         """

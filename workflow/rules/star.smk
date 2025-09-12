@@ -28,17 +28,28 @@ rule star:
         mem_mb=60000,
         cpus_per_task=16
     shell:
-        "STAR --runThreadN {resources.cpus_per_task} --genomeDir {input.index} --readFilesIn {input.r1} {input.r2} --readFilesCommand zcat --outFileNamePrefix {output.directory}/"
+        """
+        STAR --runThreadN {resources.cpus_per_task} \
+        --genomeDir {input.index} --readFilesIn {input.r1} {input.r2} \
+        --readFilesCommand zcat --outFileNamePrefix {output.directory}/ \
+        --outSAMtype BAM SortedByCoordinate --outSAMunmapped Within \
+        --quantMode GeneCounts --twopassMode Basic
+        """
 
 rule star_stats:
     input:
         expand("star_out/{replicate}/Log.final.out", replicate=REPLICATES["replicate_name"])
     output:
-        "star_alignment_stats.txt"
+        "star_alignment_stats.html"
+    envmodules:
+        "MultiQC/1.28-foss-2024a"
     resources:
         mem_mb=4000,
         cpus_per_task=1
+    params:
+        directory="star_out"
     shell:
         """
-        grep "Uniquely mapped reads %" star_out/*/Log.final.out > {output}
+        multiqc {params.directory} -n {output}
+        #grep "Uniquely mapped reads %" star_out/*/Log.final.out > {output}
         """
