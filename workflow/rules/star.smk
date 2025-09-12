@@ -6,13 +6,13 @@ rule index_star:
     envmodules:
         "STAR/2.7.11b-GCC-13.3.0"
     resources:
-        mem_mb=50000,
+        mem_mb=60000,
         cpus_per_task=12
     params:
         genome=config["genome_path"],
         gff=config["gff_path"]
     shell:
-        "STAR --runThreadN {resources.cpus_per_task} --runMode genomeGenerate --genomeDir {output} --genomeFastaFiles {params.genome} --sjdbGTFfile {params.gff} --sjdbGTFtagExonParentTranscript Parent"
+        "STAR --runThreadN {resources.cpus_per_task} --runMode genomeGenerate --genomeDir {output} --genomeFastaFiles {params.genome} --sjdbGTFfile {params.gff} --sjdbGTFtagExonParentTranscript Parent --genomeChrBinNbits 15"
 
 rule star:
     input:
