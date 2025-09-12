@@ -3,7 +3,7 @@ replicates: /home/eab77806/sunflower_stress/config/replicates2.tsv
 
 # kallisto indexing
 transcriptome: /scratch/eab77806/salt_stress/genomes/Ha412/Ha412HO_v2_braker.cds.fa
-kallisto_index_prefix: Ha412HO_v2_braker.transcripts.idx
+kallisto_index_prefix: Ha412HO_v2_braker.transcripts.v0.48
 
 # star indexing
 genome_path: /scratch/eab77806/salt_stress/genomes/Ha412/Ha412HOv2.0-20181130.genome.fasta
