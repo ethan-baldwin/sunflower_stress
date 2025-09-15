@@ -27,7 +27,7 @@ rule star:
     resources:
         mem_mb=60000,
         cpus_per_task=16,
-        time=36:00:00
+        runtime=36:00:00
     shell:
         """
         STAR --runThreadN {resources.cpus_per_task} \
