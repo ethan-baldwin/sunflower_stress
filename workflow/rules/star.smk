@@ -51,6 +51,6 @@ rule star_stats:
         directory="star_out"
     shell:
         """
-        multiqc {params.directory} -n {output}
+        multiqc -f {params.directory} -n {output}
         #grep "Uniquely mapped reads %" star_out/*/Log.final.out > {output}
         """

@@ -21,14 +21,12 @@ rule kallisto:
         abundance="kallisto_quant/{replicate}/abundance.h5",
         std_err="kallisto_reports/{replicate}.stderr"
     envmodules:
-        "kallisto/0.48.0-gompi-2022a"
+        "kallisto/0.51.1-gompi-2023b"
     resources:
         mem_mb=12000,
         cpus_per_task=8
-    params:
-        gff=config["kallisto_gff"]
     shell:
-        "kallisto quant -i {input.index} -o {output.directory} -b 100 --genomebam --gtf {params.gff} -t {resources.cpus_per_task} {input.r1} {input.r2} 2> {output.std_err}"
+        "kallisto quant -i {input.index} -o {output.directory} -b 100 -t {resources.cpus_per_task} {input.r1} {input.r2} 2> {output.std_err}"
 
 
 rule kallisto_stats:
@@ -45,6 +43,6 @@ rule kallisto_stats:
         directory="kallisto_reports"
     shell:
         """
-        multiqc {params.directory} -n {output}
+        multiqc -f {params.directory} -n {output}
 #        grep "p_pseudoaligned" kallisto_quant/*/run_info.json | awk -F'[/: ,]+' '{{print $2, $5}}' > {output}
         """
