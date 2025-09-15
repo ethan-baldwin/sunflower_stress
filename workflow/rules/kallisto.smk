@@ -4,7 +4,7 @@ rule index_kallisto:
     output:
         f"{config['kallisto_index_prefix']}.idx"
     envmodules:
-        "kallisto/0.48.0-gompi-2022a"
+        "kallisto/0.51.1-gompi-2023b"
     resources:
         mem_mb=10000
     shell:
