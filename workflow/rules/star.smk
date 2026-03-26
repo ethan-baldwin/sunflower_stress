@@ -1,6 +1,6 @@
 rule index_star:
     input:
-        config['transcriptome']
+        config["gff_path"]
     output:
         directory("star_index")
     envmodules:
